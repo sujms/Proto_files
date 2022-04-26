@@ -17,7 +17,7 @@ func (s *helloWorldServer) Greet(ctx context.Context, request *pb.HelloRequest) 
 }
 
 func main() {
-	lis, err := net.Listen("tcp", ":50051")
+	lis, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
