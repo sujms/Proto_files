@@ -3,7 +3,6 @@ package server
 import (
 	"log"
 	"net"
-	"os"
 	"testing"
 
 	pb "github.com/senyosimpson/tutorials/grokkingrpc/helloworld"
@@ -11,10 +10,10 @@ import (
 )
 
 const (
-	port = ":50051"
+	port = ":8080"
 )
 
-func Servertest() {
+func TestServer(t *testing.T) {
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
@@ -23,9 +22,6 @@ func Servertest() {
 	pb.RegisterHelloWorldServer(server, &helloWorldServer{})
 	if err := server.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
+
 	}
-}
-func TestMain(m *testing.M) {
-	go Servertest()
-	os.Exit(m.Run())
 }
