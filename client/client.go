@@ -14,7 +14,7 @@ const (
 	address = "localhost:8080"
 )
 
-func client() {
+func Client() {
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {

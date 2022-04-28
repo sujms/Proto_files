@@ -16,7 +16,7 @@ func (s *helloWorldServer) Greet(ctx context.Context, request *pb.HelloRequest) 
 	return &pb.HelloReply{Message: "Hello " + request.GetName()}, nil
 }
 
-func server() {
+func Server() {
 	lis, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)

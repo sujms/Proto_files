@@ -14,7 +14,7 @@ const (
 	port = ":50051"
 )
 
-func testserver() {
+func Servertest() {
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
@@ -26,6 +26,6 @@ func testserver() {
 	}
 }
 func TestMain(m *testing.M) {
-	go testserver()
+	go Servertest()
 	os.Exit(m.Run())
 }
