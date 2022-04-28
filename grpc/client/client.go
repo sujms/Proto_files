@@ -1,4 +1,4 @@
-package main
+package client
 
 import (
 	"context"
@@ -14,7 +14,7 @@ const (
 	address = "localhost:8080"
 )
 
-func main() {
+func client() {
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {

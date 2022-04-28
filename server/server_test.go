@@ -1,23 +1,21 @@
 package server
 
 import (
-	"context"
 	"log"
 	"net"
+	"os"
+	"testing"
 
 	pb "github.com/senyosimpson/tutorials/grokkingrpc/helloworld"
 	"google.golang.org/grpc"
 )
 
-type helloWorldServer struct{}
+const (
+	port = ":50051"
+)
 
-func (s *helloWorldServer) Greet(ctx context.Context, request *pb.HelloRequest) (*pb.HelloReply, error) {
-	log.Printf("Received: %v", request.GetName())
-	return &pb.HelloReply{Message: "Hello " + request.GetName()}, nil
-}
-
-func server() {
-	lis, err := net.Listen("tcp", ":8080")
+func testserver() {
+	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
@@ -26,4 +24,8 @@ func server() {
 	if err := server.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
+}
+func TestMain(m *testing.M) {
+	go testserver()
+	os.Exit(m.Run())
 }
