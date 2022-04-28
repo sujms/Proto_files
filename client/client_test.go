@@ -8,7 +8,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-func clienttest(t *testing.T) {
+func Clienttest(t *testing.T) {
 
 	// Set up a connection to the Server.
 	const address = "localhost:8080"

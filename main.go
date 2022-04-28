@@ -8,8 +8,6 @@ import (
 func main() {
 
 	client.Client()
-	client.Clienttest()
 	server.Server()
-	server.Servertest()
 
 }
